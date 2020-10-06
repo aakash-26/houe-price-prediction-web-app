@@ -1,0 +1,19 @@
+{% extends 'HPP/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="col-sm-12">
+        <div class="row">
+            {% if path %}
+            {% for path in path %}
+            <div class="col-sm-4">
+                <br>
+                <a href="/media/{{path.images}}"> <img style="float:right;" width="300" height="300" src="/media/{{path.images}}" alt="{{path}}"></a>
+            </div>
+
+
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock  %}

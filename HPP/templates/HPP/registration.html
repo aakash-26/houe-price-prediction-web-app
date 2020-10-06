@@ -1,0 +1,161 @@
+{% extends 'HPP/base.html' %}
+{% block content %}
+<div class="page-body">
+    <div class="container">
+        <div class="col-sm-12">
+            <div class="container register-form">
+                <div class="form">
+                    <div class="note">
+                        <p>Please fill out following information...</p>
+                    </div>
+
+                    <div class="form-content" style="text-align:center;">
+                        <form action="/hpp/predict/" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="Area in sq.ft."
+                                               id="area" name="area"
+                                               onkeypress="return isNumber(event)"
+                                               required>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="Basement Area in sq.ft."
+                                               id="base_area" name="base_area" onkeypress="return isNumber(event)"
+                                               required>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="Number of Parking Slot"
+                                               name="park" onkeypress="return isNumber(event)" required>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="Number of Bedrooms"
+                                               name="bedrooms" onkeypress="return isNumber(event)" required>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="Number of Bathrooms"
+                                               name="bathroom" onkeypress="return isNumber(event)" required>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+
+                                    <div class="input-group mb-3">
+                                        <select class="btn btn-primary"
+                                                name="guestroom" onclick="disable_option('id');"
+                                                style="width:100%;  border-radius: 16px;text-align:center;" required>
+
+
+                                            <option id="id">--Guestroom--</option>
+                                            <option class="" value="1">Yes</option>
+                                            <option class="" value="0">No</option>
+
+                                        </select>
+
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <select class="btn btn-primary"
+                                                name="waterfront" onclick="disable_option('waterfront');"
+                                                style="width:100%;  border-radius: 16px;text-align:center;" required>
+
+
+                                            <option id="waterfront">--Waterfront--</option>
+                                            <option class="" value="1">Yes</option>
+                                            <option class="" value="0">No</option>
+                                        </select>
+
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <select class="btn btn-primary"
+                                                name="view" onclick="disable_option('view');"
+                                                style="width:100%;  border-radius: 16px;text-align:center;" required>
+
+
+                                            <option id="view">--View--</option>
+                                            <option disabled>Low to High</option>
+                                            <option class="" value="1">1</option>
+                                            <option class="" value="2">2</option>
+                                            <option class="" value="3">3</option>
+                                            <option class="" value="4">4</option>
+                                            <option class="" value="5">5</option>
+
+                                        </select>
+
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <select class="btn btn-primary"
+                                                name="condition" onclick="disable_option('condition');"
+                                                style="width:100%;  border-radius: 16px;text-align:center;" required>
+
+
+                                            <option id="condition">--Condition--</option>
+                                            <option disabled>Low to High</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="5">6</option>
+                                            <option value="5">7</option>
+                                            <option value="5">8</option>
+                                            <option value="5">9</option>
+                                            <option value="5">10</option>
+
+
+                                        </select>
+
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <select class="btn btn-primary"
+                                                name="stories" onclick="disable_option('stories');"
+                                                style="width:100%;  border-radius: 16px;text-align:center;" required>
+
+
+                                            <option id="stories">--Number of Floors--</option>
+                                            <option class="" value="1">1</option>
+                                            <option class="" value="2">2</option>
+                                            <option class="" value="3">3</option>
+
+
+                                        </select>
+
+                                    </div>
+
+                                    <br>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary " type="submit" aria-haspopup="true" aria-expanded="false"
+                                    style="width:50%;  border-radius: 16px;">
+                                Submit
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function disable_option(x){
+    document.getElementById(x).disabled=true;
+    }
+
+
+
+
+
+    function isNumber(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
+    }
+
+
+</script>
+
+{% endblock %}
